@@ -120,6 +120,30 @@ If you detect some problem in FIM performance, you could retrieve the process lo
 
 ---
 
+# macOS install
+
+macOS systems will require a specific package extension and instructions. FIM is designed to install and work with the provided `pkg` extension package. You can install FIM in macOS systems with the following steps:
+
+*From terminal*
+1. Download the macOS package from [Releases page](https://github.com/Achiefs/fim/releases) 
+2. Run from a terminal `sudo installer -pkg fim*.pkg -target /` to install the package.
+3. Start FIM software with `sudo launchctl load -w /Library/LaunchDaemons/com.Achiefs.fim.launchd.plist`.
+
+*From user interface* (PKG double click)
+The installer will guide you through graphical installation. Follow the interface steps to install FIM.
+
+From this point, FIM will start to work with the default configuration. It will report each event detected to a local JSON file. The location of the file is `/var/lib/fim/events.json`.
+
+If you detect some problem in FIM performance, you could retrieve the process log from `/var/log/fim/fim.log`.
+
+{: .note}
+> Available commands in launchd [load, unload].
+
+{: .note}
+> If you wish to tune up FIM, take a look at [Configuration file]({% link docs/configuration-file.md %})
+
+---
+
 # Testing FIM events
 
 After starting FIM, it will produce events detected by your host. You may want to generate a testing event to check all is working right in your environment.
