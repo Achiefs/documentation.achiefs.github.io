@@ -155,3 +155,15 @@ Remove the file with `rm /etc/fake_file.txt`. A new event should appear.
 *Produce event in FIM Windows*
 Run `echo TEST > C:\Users\YOUR_USERNAME\fake_file.txt` in your terminal (Replace `YOUR_USERNAME` with the user you are running). At the same time, review the `C:\ProgramData\fim\events.json` file. It will store each produced event in JSON format.
 Remove the file with `rm C:\Users\YOUR_USERNAME\fake_file.txt`. A new event should appear.
+
+---
+
+## SystemD usage
+
+FIM includes a SystemD service file for easy management of FIM process status. This service file comes by default with RPM and DEB-based packages.
+The allowed commands of FIM SystemD integration are the following:
+- `systemctl start fim`, start FIM process.
+- `systemctl stop fim`, stop the FIM process.
+- `systemctl status fim` returns the current status of the FIM process and stdout trace for troubleshooting purposes.
+
+If you installed FIM manually without a package, you could set up your service file by following the section [Development/Setting SystemD service]({% link docs/development.md#setting-systemd-service %}).

@@ -112,3 +112,11 @@ Build FIM package is automated. Follow the below steps to produce the FIM packag
 
 {: .note}
 > Perform the same steps to build `rpm` or `msi` packages. It is required to use ARM hardware to build ARM packages.
+
+---
+
+## Setting SystemD service
+
+You may want to set up the FIM SystemD service manually while testing. You can do it by downloading and tuning up [the default FIM service file](https://github.com/Achiefs/fim/blob/main/pkg/fim.service). 
+
+Modify the ExecStart path where your FIM binary is, then store the file at `/lib/systemd/system/` for CentOS and Debian systems.
