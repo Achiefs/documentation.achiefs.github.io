@@ -158,7 +158,7 @@ Remove the file with `rm C:\Users\YOUR_USERNAME\fake_file.txt`. A new event shou
 
 ---
 
-## SystemD usage
+# SystemD usage
 
 FIM includes a SystemD service file for easy management of FIM process status. This service file comes by default with RPM and DEB-based packages.
 The allowed commands of FIM SystemD integration are the following:
