@@ -166,4 +166,4 @@ The allowed commands of FIM SystemD integration are the following:
 - `systemctl stop fim`, stop the FIM process.
 - `systemctl status fim` returns the current status of the FIM process and stdout trace for troubleshooting purposes.
 
-If you installed FIM manually without a package, you could set up your service file by following the section [Development/Setting SystemD service]({% link docs/development.md#setting-systemd-service %}).
+If you installed FIM manually without a package, you could set up your service file by following the section [Development/Setting SystemD service]({% link docs/development.md %}).
