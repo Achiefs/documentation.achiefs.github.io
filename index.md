@@ -17,7 +17,7 @@ Available features:
 - *File watcher*. FIM will emit events on any produced action over your files. It will enhance your environment to the next level of security.
 - *Real time alerting*. FIM works in real time. Any change in your files will trigger at the moment.
 - *Fast and reliable*. With rust language at the heart of FIM code. It allows us to produce faster, safer and more reliable code.
-- *Ingester integrated*. FIM supports native events sent to any current indexer like OpenSearch, ElasticSearch and Wazuh indexer. Enhance your experience.
+- *Ingester integrated*. FIM supports native events sent to any current indexer like OpenSearch/ElasticSearch and Splunk indexer. Enhance your experience.
 - *Identification of changes* in content, attributes, ownership or permissions.
 - *Extended detected event data*, using Audit Linux daemon. Retrieve who produces an event and which command produces it.
 - *Historical logs* storage of detected events.
