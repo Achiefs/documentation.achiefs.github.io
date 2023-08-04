@@ -24,6 +24,15 @@ If you want to customize your installation and monitor custom folders in additio
 
 In the following sections, you could review each section and parameters to tune up your configuration as you require.
 
+{: .note }
+> <div markdown="block">
+> Advanced
+> {: .label .label-red }
+> </div>
+> The tag `Advanced` mentions parameters that could affect the FIM function, and it could break something. Be sure before changing some of these options.
+
+    
+
 ---
 
 # Parameters
@@ -47,6 +56,17 @@ This parameter will come on each event produced by the process.
 
     Handle event output parameters.
 
+    - ### watcher
+
+    String
+    {: .label }
+
+    Default value: `Recommended`.
+
+    Select the watcher type used to detect the events. Recommended will use the suggested watcher for each system. The poll option will use polling to get event changes (Recommended for Fargate/ECS/EKS environments).
+    
+    The supported options are [Recommended, Poll].
+
     - ### destination
 
     String
@@ -54,7 +74,7 @@ This parameter will come on each event produced by the process.
 
     Default value: `file`.
 
-    It Defines the destination of the events.
+    It defines the destination of the events.
     
     The supported options are [file, network, both].
 
@@ -68,6 +88,19 @@ This parameter will come on each event produced by the process.
     Defines where the events will be stored.
 
     It receives a system path, ex: `C:\Users\event.json` (Windows systems) or `\home\events.json` (Unix systems).
+
+    - ### max_file_checksum 
+
+    Integer
+    {: .label .label-purple }
+    Advanced
+    {: .label .label-red }
+
+    Default value: `64`.
+
+    Defines the maximum size of the file to get its hash (checksum) in megabytes.
+
+    To speed up hashing, decrease this value, minimum value `1`, and maximum value `128`, more than that will increase the event processing time and CPU consumption.
 
     - ### endpoint
 
@@ -83,7 +116,7 @@ This parameter will come on each event produced by the process.
 
         Default value: `None`.
 
-        It Defines the IP/DNS of indexer software currently supported by indexers ElasticSearch, OpenSearch and Wazuh-indexer.
+        It defines the IP/DNS of indexer software currently supported by indexers ElasticSearch, OpenSearch and Wazuh-indexer.
 
         Format example: `0.0.0.0` for IP, `indexer.example.com` for DNS.
 
@@ -101,7 +134,9 @@ This parameter will come on each event produced by the process.
             Section
             {: .label .label-green }
 
-            Handle endpoint access credentials. 
+            Handle endpoint access credentials.
+            For ElasticSearch/OpenSearch FIM requires `user` and `password` parameters.
+            For Splunk FIM requires only `token` parameter.
 
             - ##### user
 
@@ -120,6 +155,15 @@ This parameter will come on each event produced by the process.
             Default value: `None`.
 
             Defines the password credential to push events into the indexer endpoint.
+
+            - ##### token
+
+            String
+            {: .label }
+
+            Default value: `None`.
+
+            Store the Splunk HTTP event collector token to push events to Splunk indexer endpoint.
 
 ---
 
@@ -266,6 +310,7 @@ node: "FIM"
 
 # Events configuration, where to store produced events
 events:
+  watcher: Recommended
   destination: both
   file: C:\ProgramData\fim\events.json
   max_file_checksum: 64
@@ -296,6 +341,7 @@ node: "FIM"
 
 # Events configuration, where to store produced events
 events:
+  watcher: Recommended
   destination: both
   file: /var/lib/fim/events.json
   max_file_checksum: 64
@@ -333,6 +379,7 @@ node: "FIM"
 
 # Events configuration, where to store produced events
 events:
+  watcher: Recommended
   destination: both
   file: /var/lib/fim/events.json
   max_file_checksum: 64
