@@ -36,8 +36,10 @@ FIM supports two integrations:
 
 The ELS/OS integration is set by the `endpoint` configuration section. This section has different options, but the required ones are the following:
 - ElasticSearch/OpenSearch `address`. This address has to be addressable by the FIM node. The `address` usually includes the port that ELS/OS by default uses the 9200, an example of the `address` field: `https://elastic.example.com:9200`.
+
 {: .note}
 > Review the `insecure` parameter in a testing environment. In the production environment, you should use `insecure: false` or keep it empty as default `false`.
+
 - Inside the credentials section, it's required to set the `user` and `password` parameters to access the indexer environment.
   - The `user` parameter has to contain an ELS/OS username with permission to push an object into an index and create an index.
   - The `password` parameter has to contain the access password of the previously given user.
