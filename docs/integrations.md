@@ -20,7 +20,7 @@ nav_order: 4
 
 # Summary
 
-FIM could be integrated with two platforms (one at the same time). The integration will help users to store in the cloud all the events produced by FIM in a easy way. The stored events could be processed and analyzed lately.
+FIM supports integration with two platforms (one at the same time). The integration will help users to store in the cloud all the events produced by FIM in a easy way. The stored events could be processed and analyzed lately.
 
 ---
 

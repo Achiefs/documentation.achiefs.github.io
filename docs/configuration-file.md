@@ -27,7 +27,7 @@ In the following sections, you could review each section and parameters to tune 
 {: .note }
 > <div markdown="block">
 > Advanced
-> {: .label .label-grey }
+> {: .label .label-red }
 > </div>
 > The tag `Advanced` mentions parameters that could affect the FIM function, and it could break something. Be sure before changing some of these options.
 
@@ -92,9 +92,9 @@ This parameter will come on each event produced by the process.
     - ### max_file_checksum 
 
     Integer
-    {: .label .label-pink }
+    {: .label .label-purple }
     Advanced
-    {: .label .label-grey }
+    {: .label .label-red }
 
     Default value: `64`.
 
