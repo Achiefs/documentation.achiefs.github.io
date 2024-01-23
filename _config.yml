@@ -14,5 +14,8 @@ callouts:
     title: Note
     color: blue
 
+plugins:
+  - jekyll-default-layout
+
 ga_tracking: G-MTKBVPJR32
 ga_tracking_anonymize_ip: true
