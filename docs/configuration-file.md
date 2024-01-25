@@ -203,6 +203,27 @@ This parameter will come on each event produced by the process.
 
         Allows to define custom labels on each event produced at the given path.
 
+        - #### rule
+
+        String
+        {: .label}
+
+        Default value: `wax`.
+
+        Allows to define custom Audit rule at the given path.
+
+{: .note }
+> The `rule` parameter support the following characters in any order:
+> - `r` or `R`, enable read events at the given path.
+> - `w` or `W`, enable write events at the given path.
+> - `a` or `A`, enable attributes change events at the given path.
+> - `x` or `X`, enable execution of code events at the given path.
+> 
+> Examples of the format:
+> - `rwax`, to detect all kind of events (It could be noisy).
+> - `wax`, default value to detect write, attribute change and execution.
+> - `w`, value to detect directory write changes.
+
 ---
 
 - ## monitor
