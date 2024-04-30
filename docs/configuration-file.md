@@ -194,6 +194,28 @@ This parameter will come on each event produced by the process.
         
         Available formats Array or List. Consult the note at the end of the section.
 
+        - #### allowed
+
+        Array
+        {: .label .label-yellow }
+        String
+        {: .label}
+
+        Set the allowed strings to trigger events, events in this path will trigger if the file contains any of configured strings.
+        
+        Available formats Array or List. Consult the note at the end of the section.
+
+        - #### exclude
+
+        Array
+        {: .label .label-yellow }
+        String
+        {: .label}
+
+        Set the excluded folders inside the Audit path given. Set a path outside of the Audit parent path will produce unexpected behaviour.
+        
+        Available formats Array or List. Consult the note at the end of the section.
+
         - #### labels
 
         Array
@@ -253,6 +275,28 @@ This parameter will come on each event produced by the process.
         
         Available formats Array or List. Consult the note at the end of the section.
 
+        - #### allowed
+
+        Array
+        {: .label .label-yellow }
+        String
+        {: .label}
+
+        Set the allowed strings to trigger events, events in this path will trigger if the file contains any of configured strings.
+        
+        Available formats Array or List. Consult the note at the end of the section.
+
+        - #### exclude
+
+        Array
+        {: .label .label-yellow }
+        String
+        {: .label}
+
+        Set the excluded folders inside the Monitor path given. Set a path outside of the Monitor parent path will produce unexpected behaviour.
+        
+        Available formats Array or List. Consult the note at the end of the section.
+
         - #### labels
 
         Array
@@ -292,7 +336,7 @@ This parameter will come on each event produced by the process.
     The supported options are [debug, info, error and warning].
 
 {: .note }
-> The `ignore` parameter has two different formats:
+> The `ignore`,`allowed` and `exclude` parameters has two different formats:
 > ```
 >   - path: /tmp/dir
 >     ignore: [.txt, .tmp]
@@ -348,6 +392,9 @@ monitor:
     labels: ["Program Files", "windows"]
   - path: C:\Users\
     labels: ["Users", "windows"]
+    allowed: [".txt", ".doc"] 
+    exclude: 
+      - C:\Users\Temp
 
 # App procedure and errors logging
 log:
@@ -378,6 +425,7 @@ audit:
   - path: /tmp
     labels: ["tmp", "linux"]
     ignore: [".swp"]
+    allowed: [ ".txt", ".odt" ]
 
 # Simple files and folders information
 monitor:
@@ -386,6 +434,7 @@ monitor:
     labels: ["usr/bin", "linux"]
   - path: /etc
     labels: ["etc", "linux"]
+    exclude: [ "/etc/libvirt/qemu" ]
 
 # App procedure and errors logging
 log:
