@@ -87,7 +87,7 @@ This parameter will come on each event produced by the process.
 
     Defines where the events will be stored.
 
-    It receives a system path, ex: `C:\Users\event.json` (Windows systems) or `\home\events.json` (Unix systems).
+    It receives a system path, ex: `C:\Users\events.json` (Windows systems) or `\home\events.json` (Unix systems).
 
     - ### max_file_checksum 
 
@@ -101,6 +101,19 @@ This parameter will come on each event produced by the process.
     Defines the maximum size of the file to get its hash (checksum) in megabytes.
 
     To speed up hashing, decrease this value, minimum value `1`, and maximum value `128`, more than that will increase the event processing time and CPU consumption.
+
+    - ### max_file_size
+
+    Integer
+    {: .label .label-purple }
+    Advanced
+    {: .label .label-red }
+
+    Default value: `128`.
+
+    Defines the maximum size of `events.json` file before being rotated.
+
+    we recommend to maintain this value as default. Increasing it will allow to rotate the file less times. Decreasing it will increase the rotations of the file.
 
     - ### endpoint
 
@@ -308,6 +321,78 @@ This parameter will come on each event produced by the process.
 
 ---
 
+- ## hashscanner
+
+    Section
+    {: .label .label-green }
+
+    Defines the current behaviour of file hash scans.
+
+    Hash scanner will take your primary engine config paths to be scanned.
+    If you only have Audit paths defined Hash scanner will scan over those paths.
+    If you only have Monitor paths defined Hash scanner will scan monitor section defined paths.
+    If both engines are defined Hash scanner will select Audit (as usually is the critical one).
+
+
+    - ### file
+
+    String
+    {: .label }
+
+    Default value: `C:\ProgramData\fim\fim.db` for Windows systems, `/var/lib/fim/fim.db` for Unix systems.
+
+    Defines where the hash database will be stored.
+
+    It receives a system path, ex: `C:\Users\events.json` (Windows systems) or `\home\events.json` (Unix systems).
+
+    - ### enabled
+
+    Boolean
+    {: .label .label-purple }
+
+    Default value: `true`.
+
+    It defines whether the hash scanner thread starts or not.
+
+    - ### interval
+
+    Integer
+    {: .label .label-purple }
+    Advanced
+    {: .label .label-red }
+
+    Default value: `60`.
+
+    Defines the window interval to run hash scans, hashscanner thread will sleep the defined interval.
+
+    To speed up scans, decrease this value, minimum value `5` (not recommended for bigger paths more than 5.000 files), and suggested as maximum value `1440` (24h), more than that will introduce security risks. This scan is not intended for real-time analysis for that matter you should use Monitor or Audit engine.
+
+    - ### algorithm
+
+    String
+    {: .label}
+
+    Default value: `Sha256`.
+
+    Allows to define hashing algoritmh applied to each file.
+
+{: .note }
+> The `algorithm` parameter support the following values:
+> - `Sha224` or `sha224` or `SHA224` or `224`, use Sha224 as hashing algorithm.
+> - `Sha256` or `sha256` or `SHA256` or `256`, use Sha256 as hashing algorithm.
+> - `Sha384` or `sha384` or `SHA384` or `384`, use Sha384 as hashing algorithm.
+> - `Sha512` or `sha512` or `SHA512` or `512`, use Sha512 as hashing algorithm.
+> - `Keccak224` or `keccak224` or `KECCAK224` or `K224`, use Keccak224 as hashing algorithm.
+> - `Keccak256` or `keccak256` or `KECCAK256` or `K256`, use Keccak256 as hashing algorithm.
+> - `Keccak384` or `keccak384` or `KECCAK384` or `K384`, use Keccak384 as hashing algorithm.
+> - `Keccak512` or `keccak512` or `KECCAK512` or `K512`, use Keccak512 as hashing algorithm.
+>
+> If `algorithm` is changed after FIM first scan (`fim.db` file is present) you should remove `fim.db` file to avoid false positive events.
+>
+> Take into account that increasing the hash algorithm could lead to higher scan times so keep in mind the relation between interval and algorithm.
+
+---
+
 - ## log
 
     Section
@@ -334,6 +419,19 @@ This parameter will come on each event produced by the process.
     Defines the level of verbosity logged to the log file.
     
     The supported options are [debug, info, error and warning].
+
+    - ### max_file_size
+
+    Integer
+    {: .label .label-purple }
+    Advanced
+    {: .label .label-red }
+
+    Default value: `64`.
+
+    Defines the maximum size of `fim.log` file before being rotated.
+
+    we recommend to maintain this value as default. Increasing it will allow to rotate the file less times. Decreasing it will increase the rotations of the file.
 
 {: .note }
 > The `ignore`,`allowed` and `exclude` parameters has two different formats:

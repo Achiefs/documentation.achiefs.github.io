@@ -49,9 +49,15 @@ For CentOS-based systems: download the `rpm` and jump to [CentOS-based install](
   - Windows 7 or greater.
   - macOS BigSur or greater.
 
-- Supported architectures (Linux only):
-  - For ARM64: [AARCH64, ARM64].
-  - For AMD64: [X86_64, AMD64].
+- Supported architectures:
+  - Linux
+    - ARM64: [AARCH64, ARM64].
+    - AMD64: [X86_64, AMD64].
+  - Windows
+    - X86_64.
+  - macOS
+    - x86_64 (Intel).
+    - ARM64 (Apple Silicon).
 
 ---
 
